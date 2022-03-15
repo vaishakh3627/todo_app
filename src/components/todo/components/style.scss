@@ -1,0 +1,103 @@
+.row-contents {
+    width: 50vw;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(112, 109, 109);
+    border-radius: 10px;
+}
+.column-contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-inline {
+    width: 80%;
+}
+.form-group {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.form-label1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+}
+.form-control1 {
+    height: 80px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.form-button {
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.column-contents1 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+}
+.navigation-button {
+    width: 5rem;
+    height: 2.5rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+.row-elements-list1 {
+    width: 50vw;
+    height: auto;
+    background-color: rgb(112, 109, 109);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.row-elements-list2 {
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 4rem;
+}
+.elements-list1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+.elements-list2 {
+    height: auto;
+    margin: 10px;
+}
+.elements1 {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.elements2 {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.row-elements-list3 {
+    height: 4rem;
+}
+.elements3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Courier New', Courier, monospace;
+}
+.elements4 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Courier New', Courier, monospace;
+}

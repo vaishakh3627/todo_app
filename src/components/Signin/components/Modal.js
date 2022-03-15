@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
 
-const ModalComponent = ({ email, ...props}) => {
+import { Button, Modal, NavLink } from "react-bootstrap";
+
+const ModalComponent = ({ email, ...props }) => {
   return (
     <Modal
       {...props}
@@ -18,7 +19,9 @@ const ModalComponent = ({ email, ...props}) => {
         <h5>Your Account is activated</h5>
       </Modal.Body>
       <Modal.Footer>
+        <NavLink href="/home">
           <Button variant="primary">Let's Go</Button>
+        </NavLink>
       </Modal.Footer>
     </Modal>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 
-import Layout from "../components/todo";
+import Layout from "./Layout";
 
 const Home = () => {
 
-    return(
+    return (
         <Layout />
     )
 }

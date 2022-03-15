@@ -1,23 +1,22 @@
 import { React, useState } from "react";
 
-import { Form, Button, Col, Collapse } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 
 import ModalComponent from "./Modal";
 
 const SignInForm = ({ data, setData }) => {
   const [accepted, setAccepted] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setData({ email: "", password: "" });
-    setAccepted(false);
-  };
 
   return (
     <>
-      <ModalComponent show={modalShow} onClose={() => setModalShow(false)}  email={data}/>
+      <ModalComponent
+        show={modalShow}
+        onClose={() => setModalShow(false)}
+        email={data}
+      />
       <Col xs={12} md={6} className="contents-column1">
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -46,7 +45,6 @@ const SignInForm = ({ data, setData }) => {
           </Form.Group>
           <Button
             variant="primary"
-            type="submit"
             disabled={!(accepted && data !== "")}
             onClick={() => setModalShow(true)}
           >
