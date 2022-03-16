@@ -1,13 +1,10 @@
-import { React, useState } from "react";
+import { React } from "react";
 
 import { Col, Row, Form, Button } from "react-bootstrap";
 
 import { CREATE_TODO, COMPLETED_TODO } from "../constants";
 
-const TodoList = ({ todo, setComponent }) => {
-  const [completed, setCompleted] = useState([]);
-  const [check, setCheck] = useState(false)
-
+const TodoList = ({ todo, setComponent, setCompleted }) => {
   return (
     <Row className="row-elements-list1">
       <Col xs={12} className="elements-list1">
@@ -18,14 +15,24 @@ const TodoList = ({ todo, setComponent }) => {
           <Row key={key} className="row-elements-list2">
             <Col xs={6} className="elements1">
               {" "}
-              <li>{item}</li>
+              <li>{item.text}</li>
             </Col>
             <Col xs={2} className="elements2">
-              <Form.Check onClick={()=> setCheck(true)}/>
+              <Form.Check
+                type="checkbox"
+                value={item.status}
+                onChange={(e) => {
+                  setCompleted(
+                    todo.filter((obj) => {
+                      if (obj.id === item.id) {
+                        obj.status = e.target.checked;
+                      }
+                      return obj.status === true;
+                    })
+                  );
+                }}
+              />
             </Col>
-            {
-                console.log(check)
-            }
           </Row>
         ))}
       </Col>

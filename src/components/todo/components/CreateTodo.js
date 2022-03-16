@@ -9,7 +9,7 @@ const CreateTodo = ({ task, setTask, setTodo, setComponent }) => {
   const handleSubmit = (e) => {
     setTodo((previousState) => {
       setTask("");
-      return [...previousState, task];
+      return [...previousState, {id:Date.now(), text:task, status:false}];
     });
     e.preventDefault();
   };

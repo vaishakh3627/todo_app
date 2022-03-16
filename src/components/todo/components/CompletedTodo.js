@@ -1,9 +1,13 @@
 import React from "react";
 
-const CompletedTodo = () => {
+const CompletedTodo = ({completed}) => {
     
     return(
-        <div><h1>Welcome</h1></div>
+        <div>{completed.map((item, key) => (
+            <ol key={key}> 
+            <li>{item.text}</li></ol>
+            
+        ))}</div>
     )
 }
 export default CompletedTodo;

@@ -13,6 +13,7 @@ const Layout = () => {
   const [component, setComponent] = useState(CREATE_TODO);
   const [task, setTask] = useState("");
   const [todo, setTodo] = useState([]);
+  const [completed, setCompleted] = useState([]);
 
   const renderComponent = {
     [CREATE_TODO]: (
@@ -23,8 +24,8 @@ const Layout = () => {
         setComponent={setComponent}
       />
     ),
-    [TODOLIST]: <TodoList todo={todo} setComponent={setComponent} />,
-    [COMPLETED_TODO]: <CompletedTodo />,
+    [TODOLIST]: <TodoList todo={todo} setComponent={setComponent} setCompleted={setCompleted} />,
+    [COMPLETED_TODO]: <CompletedTodo completed={completed}/>,
   };
 
   return (
