@@ -1,59 +1,85 @@
 import { React } from "react";
 
-import { Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, Form, Button, Container } from "react-bootstrap";
+
+import { FaTrashAlt } from "react-icons/fa";
 
 import { CREATE_TODO, COMPLETED_TODO } from "../constants";
 
-const TodoList = ({ todo, setComponent, setCompleted }) => {
+const TodoList = ({
+  todo,
+  setComponent,
+  setCompleted,
+  setDeleted,
+  setTodo,
+}) => {
+  const deleteHandler = (key) => {
+    const deleteTodo = todo.filter((i, index) => key !== index);
+    const updateDeletedTodo = todo.filter((i, index) => key === index);
+    setTodo(deleteTodo);
+    setDeleted((previousState) => [...previousState,  ...updateDeletedTodo ]);
+  };
+
   return (
-    <Row className="row-elements-list1">
-      <Col xs={12} className="elements-list1">
-        <h1>Todo List</h1>
-      </Col>
-      <Col xs={10} className="elements-list2">
-        {todo.map((item, key) => (
-          <Row key={key} className="row-elements-list2">
-            <Col xs={6} className="elements1">
-              {" "}
-              <li>{item.text}</li>
-            </Col>
-            <Col xs={2} className="elements2">
-              <Form.Check
-                type="checkbox"
-                value={item.status}
-                onChange={(e) => {
-                  setCompleted(
-                    todo.filter((obj) => {
-                      if (obj.id === item.id) {
-                        obj.status = e.target.checked;
-                      }
-                      return obj.status === true;
-                    })
-                  );
-                }}
-              />
-            </Col>
-          </Row>
-        ))}
-      </Col>
-      <Col xs={12}>
-        <Row className="row-elements-list3">
-          <Col xs={6} className="elements3">
-            <Button variant="primary" onClick={() => setComponent(CREATE_TODO)}>
-              Create Todo
-            </Button>
+    <Container className="wrapper">
+      <Row>
+        <h1 className="wrapper-heading">TODO LIST</h1>
+      </Row>
+      {todo.map((item, key) => (
+        <Row className="wrapper-raw" key={key}>
+          <Col xs={10}>
+            <ul>
+              <li>
+                <h5>{item.text}</h5>
+              </li>
+            </ul>
           </Col>
-          <Col xs={6} className="elements4">
+          <Col className="wrapper-column" xs={1}>
+            <Form.Check
+              style={{ margin: "0px" }}
+              type="checkbox"
+              checked={item.status}
+              onChange={(e) => {
+                setCompleted(
+                  todo.filter((obj) => {
+                    if (obj.id === item.id) {
+                      obj.status = e.target.checked;
+                    }
+                    return obj.status === true;
+                  })
+                );
+              }}
+            />
+          </Col>
+          <Col xs={1}>
             <Button
-              variant="primary"
-              onClick={() => setComponent(COMPLETED_TODO)}
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+              }}
+              value={item.text}
+              disabled={item.status === true}
+              onClick={() => deleteHandler(key)}
             >
-              Next
+              <FaTrashAlt />
             </Button>
           </Col>
         </Row>
-      </Col>
-    </Row>
+      ))}
+      <Row>
+        <Col className="wrapper-secondary-column">
+          <Button variant="primary" onClick={() => setComponent(CREATE_TODO)}>
+            Create Todo
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => setComponent(COMPLETED_TODO)}
+          >
+            Next
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 export default TodoList;

@@ -12,8 +12,8 @@ import "./style.scss";
 
 const Header = () => {
   return (
-    <Navbar bg="light" expand={false} fixed="top" className="header-nav">
-      <Container fluid className="header-contents">
+    <Navbar bg="dark" variant="dark" expand={false} fixed="top">
+      <Container fluid>
         <Navbar.Brand href="#">My Todo</Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" />
         <Navbar.Offcanvas
@@ -32,9 +32,6 @@ const Header = () => {
                 <NavDropdown.Item href="#action3">Todo List</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
                   Completed Todo's
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action5">
-                  Pending Todo's
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
                   Deleted Todo's

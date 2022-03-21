@@ -1,17 +1,18 @@
 import { React, useState } from "react";
 
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { TODOLIST } from "../constants";
 
 import "./style.scss";
 
 const CreateTodo = ({ task, setTask, setTodo, setComponent }) => {
   const handleSubmit = (e) => {
-    setTodo((previousState) => {
-      setTask("");
-      return [...previousState, {id:Date.now(), text:task, status:false}];
-    });
     e.preventDefault();
+    setTask("");
+    setTodo((previousState) => [
+      ...previousState,
+      { id: Date.now(), text: task, status: false },
+    ]);
   };
 
   const handleButton = (e) => {
@@ -20,41 +21,35 @@ const CreateTodo = ({ task, setTask, setTodo, setComponent }) => {
   };
 
   return (
-    <Row className="row-contents">
-      <Col className="column-contents" xs={12}>
-        <Form className="form-inline">
-          <Form.Group className="form-group">
-            <Form.Label className="form-label1">Create Todo</Form.Label>
-            <Form.Control
-              type="text"
-              className="form-control1"
-              placeholder="Create your todo's here"
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
-            />
-          </Form.Group>
-          <Button
-            variant="primary"
-            type="text"
-            className="form-button"
-            onClick={handleSubmit}
-          >
-            Create
-          </Button>
-        </Form>
-      </Col>
+    <Container className="wrapper">
       <Row>
-        <Col className="column-contents1" xs={11}>
-          <Button
-            variant="primary"
-            className="navigation-button"
-            onClick={handleButton}
-          >
-            Next
-          </Button>
+        <Col xs={12}>
+          <Form>
+            <Form.Group className="wrapper-form-group">
+              <Form.Label className="wrapper-heading">
+                <h1>CREATE TODO</h1>
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Create your todo's here"
+                value={task}
+                onChange={(e) => setTask(e.target.value)}
+              />
+            </Form.Group>
+            <Row>
+              <Col className="wrapper-button-column">
+                <Button variant="primary" type="text" onClick={handleSubmit}>
+                  Create
+                </Button>
+                <Button variant="primary" onClick={handleButton}>
+                  Next
+                </Button>
+              </Col>
+            </Row>
+          </Form>
         </Col>
       </Row>
-    </Row>
+    </Container>
   );
 };
 export default CreateTodo;

@@ -1,19 +1,18 @@
 import React from "react";
 
-import { Row, Col, Button, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
-import { CREATE_TODO, TODOLIST, DELETED_TODO } from "../constants";
+import { CREATE_TODO, TODOLIST, COMPLETED_TODO } from "../constants";
 
-const CompletedTodo = ({ completed, setComponent }) => {
-
+const DeletedTodo = ({ deleted, setComponent }) => {
   return (
     <Container className="wrapper">
       <Row>
-        <h1 className="wrapper-heading">COMPLETED TODO</h1>
+        <h1 className="wrapper-heading">DELETED TODO</h1>
       </Row>
-      {completed.map((item, key) => (
+      {deleted.map((item, key) => (
         <Row key={key} className="wrapper-raw">
-          <Col xs={12}>
+          <Col>
             <ul>
               <li>
                 <h5>{item.text}</h5>
@@ -30,12 +29,12 @@ const CompletedTodo = ({ completed, setComponent }) => {
           <Button variant="primary" onClick={() => setComponent(TODOLIST)}>
             Todo List
           </Button>
-          <Button variant="primary" onClick={() => setComponent(DELETED_TODO)}>
-            Deleted Todo
+          <Button variant="primary" onClick={() => setComponent(COMPLETED_TODO)}>
+            Completed
           </Button>
         </Col>
       </Row>
     </Container>
   );
 };
-export default CompletedTodo;
+export default DeletedTodo;
