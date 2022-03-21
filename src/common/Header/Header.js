@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand={false} fixed="top">
       <Container fluid>
-        <Navbar.Brand href="#">My Todo</Navbar.Brand>
+        <Navbar.Brand href="/home">My Todo</Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" />
         <Navbar.Offcanvas
           id="offcanvasNavbar"
@@ -23,12 +23,23 @@ const Header = () => {
           className="offcanvas"
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel" className="offcanvasNavbarLabel"><h1>Account</h1></Offcanvas.Title>
+            <Offcanvas.Title
+              id="offcanvasNavbarLabel"
+              className="offcanvasNavbarLabel"
+            >
+              <h1>Account</h1>
+            </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body className= "home-link">
+          <Offcanvas.Body className="home-link">
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1" className="home-link">Home</Nav.Link>
-              <NavDropdown className= "home-link" title="Actions" id="offcanvasNavbarDropdown">
+              <Nav.Link href="/home" className="home-link">
+                Home
+              </Nav.Link>
+              <NavDropdown
+                className="home-link"
+                title="Actions"
+                id="offcanvasNavbarDropdown"
+              >
                 <NavDropdown.Item href="#action3">Todo List</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
                   Completed Todo's
@@ -37,6 +48,11 @@ const Header = () => {
                   Deleted Todo's
                 </NavDropdown.Item>
               </NavDropdown>
+            </Nav>
+            <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav.Link href="/" className="home-link">
+                LogOut
+              </Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
